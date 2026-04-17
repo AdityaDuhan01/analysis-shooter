@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <div id="joinScreen">
     <div id="joinBox">
       <h1>Reaction Analysis</h1>
@@ -22,6 +23,15 @@
   </div>
 
   <canvas id="gameCanvas" style="display:none"></canvas>
+
+  <!-- Game Over Screen -->
+  <div id="gameOverScreen" style="display:none">
+    <div id="gameOverBox">
+      <h2>Game Over</h2>
+      <p id="finalScore">Your Score: 0</p>
+      <button id="playAgainBtn">Play Again</button>
+    </div>
+  </div>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="game.js"></script>
