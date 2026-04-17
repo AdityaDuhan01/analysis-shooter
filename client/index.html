@@ -6,12 +6,23 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="ui">
+  <div id="joinScreen">
+    <div id="joinBox">
+      <h1>Reaction Analysis</h1>
+      <p>Test your reaction speed against others</p>
+      <input type="text" id="nameInput" placeholder="Enter your name" maxlength="16" />
+      <button id="joinBtn">Join Game</button>
+    </div>
+  </div>
+
+  <div id="ui" style="display:none">
     <span id="playerName">Player: —</span>
     <span id="score">Score: 0</span>
     <span id="timer">Time: 30s</span>
   </div>
-  <canvas id="gameCanvas"></canvas>
+
+  <canvas id="gameCanvas" style="display:none"></canvas>
+
   <script src="/socket.io/socket.io.js"></script>
   <script src="game.js"></script>
 </body>

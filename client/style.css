@@ -10,6 +10,62 @@ body {
   font-family: monospace;
 }
 
+#joinScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #0f0f0f;
+}
+
+#joinBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px;
+  border: 2px solid #00ff88;
+  background: #1a1a1a;
+  min-width: 320px;
+}
+
+#joinBox h1 {
+  color: #00ff88;
+  font-size: 28px;
+}
+
+#joinBox p {
+  color: #aaaaaa;
+  font-size: 14px;
+}
+
+#nameInput {
+  padding: 10px 16px;
+  font-size: 16px;
+  font-family: monospace;
+  background: #0f0f0f;
+  border: 1px solid #00ff88;
+  color: #ffffff;
+  width: 240px;
+  outline: none;
+}
+
+#joinBtn {
+  padding: 10px 32px;
+  font-size: 16px;
+  font-family: monospace;
+  background: #00ff88;
+  color: #0f0f0f;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+
+#joinBtn:hover {
+  background: #00cc66;
+}
+
 #ui {
   position: fixed;
   top: 0;
