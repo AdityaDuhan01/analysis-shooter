@@ -11,7 +11,10 @@ const scoreEl = document.getElementById('score');
 const timerEl = document.getElementById('timer');
 const gameOverScreen = document.getElementById('gameOverScreen');
 const finalScoreEl = document.getElementById('finalScore');
+const finalLeaderboardEl = document.getElementById('finalLeaderboard');
 const playAgainBtn = document.getElementById('playAgainBtn');
+const leaderboardEl = document.getElementById('leaderboard');
+const leaderboardList = document.getElementById('leaderboardList');
 
 let playerName = '';
 let score = 0;
@@ -21,17 +24,32 @@ let timeLeft = 30;
 let spawnInterval = null;
 let timerInterval = null;
 
+// --- Socket Events ---
+
+socket.on('updateLeaderboard', (data) => {
+  // Update live leaderboard panel
+  leaderboardList.innerHTML = '';
+  data.forEach(p => {
+    const li = document.createElement('li');
+    li.textContent = `${p.name}: ${p.score}`;
+    if (p.name === playerName) li.style.color = '#00ff88';
+    leaderboardList.appendChild(li);
+  });
+
+  // On game over, also update final leaderboard
+  if (!gameRunning && gameOverScreen.style.display === 'flex') {
+    finalLeaderboardEl.innerHTML = '<strong style="color:#00ff88">Final Standings:</strong><br>' +
+      data.map((p, i) => `${i + 1}. ${p.name} — ${p.score}`).join('<br>');
+  }
+});
+
 // --- Target Logic ---
 
 function spawnTarget() {
   const radius = 30;
   const x = Math.random() * (canvas.width - radius * 2) + radius;
   const y = Math.random() * (canvas.height - radius * 2) + radius;
-
-  targets.push({
-    x, y, radius,
-    spawnedAt: Date.now()
-  });
+  targets.push({ x, y, radius, spawnedAt: Date.now() });
 }
 
 function drawTargets() {
@@ -71,20 +89,17 @@ canvas.addEventListener('click', (e) => {
   if (result.hit) {
     score++;
     scoreEl.textContent = 'Score: ' + score;
-    console.log('Hit! Reaction time:', result.reactionTime, 'ms');
+    socket.emit('scored'); // tell server
   }
 });
 
-// --- Timer Logic ---
+// --- Timer ---
 
 function startTimer() {
   timerInterval = setInterval(() => {
     timeLeft--;
     timerEl.textContent = 'Time: ' + timeLeft + 's';
-
-    if (timeLeft <= 0) {
-      endGame();
-    }
+    if (timeLeft <= 0) endGame();
   }, 1000);
 }
 
@@ -108,6 +123,7 @@ playAgainBtn.addEventListener('click', () => {
   timerEl.textContent = 'Time: 30s';
   gameOverScreen.style.display = 'none';
   gameRunning = true;
+  socket.emit('scored'); // reset won't work without re-join, handled next step
   startSpawning();
   startTimer();
 });
@@ -133,8 +149,6 @@ function gameLoop() {
   requestAnimationFrame(gameLoop);
 }
 
-// --- Spawn Loop ---
-
 function startSpawning() {
   spawnTarget();
   spawnInterval = setInterval(() => {
@@ -142,7 +156,7 @@ function startSpawning() {
   }, 1200);
 }
 
-// --- Join Flow ---
+// --- Join ---
 
 function startGame() {
   playerName = nameInput.value.trim();
@@ -154,7 +168,10 @@ function startGame() {
   joinScreen.style.display = 'none';
   ui.style.display = 'flex';
   canvas.style.display = 'block';
+  leaderboardEl.style.display = 'block';
+
   playerNameEl.textContent = 'Player: ' + playerName;
+  socket.emit('joinGame', playerName);
 
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);

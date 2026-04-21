@@ -24,11 +24,17 @@
 
   <canvas id="gameCanvas" style="display:none"></canvas>
 
-  <!-- Game Over Screen -->
+  <!-- Live Leaderboard -->
+  <div id="leaderboard" style="display:none">
+    <h3>🏆 Live Scores</h3>
+    <ol id="leaderboardList"></ol>
+  </div>
+
   <div id="gameOverScreen" style="display:none">
     <div id="gameOverBox">
       <h2>Game Over</h2>
       <p id="finalScore">Your Score: 0</p>
+      <div id="finalLeaderboard"></div>
       <button id="playAgainBtn">Play Again</button>
     </div>
   </div>
