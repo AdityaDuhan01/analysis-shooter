@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Analytics — Reaction Analysis</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="analytics.css">
+</head>
+<body>
+  <div id="analyticsPage">
+
+    <div id="analyticsHeader">
+      <h1>📊 Performance Analytics</h1>
+      <a href="/" id="backBtn">← Back to Game</a>
+    </div>
+
+    <div id="statsGrid">
+      <div class="statCard">
+        <span class="statLabel">Total Games</span>
+        <span class="statValue" id="totalGames">—</span>
+      </div>
+      <div class="statCard">
+        <span class="statLabel">Avg Accuracy</span>
+        <span class="statValue" id="avgAccuracy">—</span>
+      </div>
+      <div class="statCard">
+        <span class="statLabel">Avg Reaction Time</span>
+        <span class="statValue" id="avgReaction">—</span>
+      </div>
+      <div class="statCard">
+        <span class="statLabel">Top Score</span>
+        <span class="statValue" id="topScore">—</span>
+      </div>
+    </div>
+
+    <div id="resultsSection">
+      <h2>Recent Games</h2>
+      <table id="resultsTable">
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Score</th>
+            <th>Accuracy</th>
+            <th>Avg Reaction</th>
+            <th>Hits</th>
+            <th>Misses</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody">
+          <tr><td colspan="7">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="analytics.js"></script>
+</body>
+</html>

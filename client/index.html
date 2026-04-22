@@ -23,8 +23,7 @@
   </div>
 
   <canvas id="gameCanvas" style="display:none"></canvas>
-
-  <!-- Live Leaderboard -->
+ <!-- Live Leaderboard -->
   <div id="leaderboard" style="display:none">
     <h3>🏆 Live Scores</h3>
     <ol id="leaderboardList"></ol>
@@ -35,7 +34,10 @@
       <h2>Game Over</h2>
       <p id="finalScore">Your Score: 0</p>
       <div id="finalLeaderboard"></div>
-      <button id="playAgainBtn">Play Again</button>
+      <div style="display:flex; gap:12px; margin-top:8px;">
+        <button id="playAgainBtn">Play Again</button>
+        <a href="/analytics" id="analyticsBtn">View Analytics</a>
+      </div>
     </div>
   </div>
 

@@ -116,7 +116,22 @@ function endGame() {
   clearInterval(timerInterval);
   targets = [];
 
-  finalScoreEl.textContent = 'Your Score: ' + score;
+  const misses = totalClicks - hits;
+  const accuracy = totalClicks === 0 ? 0 : Math.round((hits / totalClicks) * 100);
+  const avgReactionTime = reactionTimes.length === 0 ? 0
+    : Math.round(reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length);
+
+  socket.emit('gameOver', {
+    playerName,
+    score,
+    totalTargets: totalClicks,
+    hits,
+    misses,
+    accuracy,
+    avgReactionTime
+  });
+
+  finalScoreEl.textContent = `Score: ${score} | Accuracy: ${accuracy}% | Avg Reaction: ${avgReactionTime}ms`;
   gameOverScreen.style.display = 'flex';
 }
 

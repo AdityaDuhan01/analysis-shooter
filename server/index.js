@@ -16,6 +16,9 @@ const httpServer = createServer(app);
 const io = new Server(httpServer);
 
 app.use(express.static(path.join(__dirname, '../client')));
+app.get('/analytics', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/analytics.html'));
+});
 app.use(express.json());
 
 // Store all players
@@ -82,6 +85,9 @@ app.get('/api/results', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+app.get('/analytics', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/analytics.html'));
+});
 httpServer.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

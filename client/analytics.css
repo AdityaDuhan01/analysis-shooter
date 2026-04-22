@@ -1,0 +1,93 @@
+#analyticsPage {
+  padding: 20px 40px;
+  color: #ffffff;
+  font-family: monospace;
+  background: #0f0f0f;
+  min-height: 100vh;
+}
+
+#analyticsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #00ff88;
+  padding-bottom: 16px;
+}
+
+#analyticsHeader h1 {
+  color: #00ff88;
+  font-size: 24px;
+}
+
+#backBtn {
+  color: #00ff88;
+  text-decoration: none;
+  font-size: 14px;
+  border: 1px solid #00ff88;
+  padding: 6px 14px;
+}
+
+#backBtn:hover {
+  background: #00ff88;
+  color: #0f0f0f;
+}
+
+#statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.statCard {
+  background: #1a1a1a;
+  border: 1px solid #00ff88;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.statLabel {
+  color: #aaaaaa;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.statValue {
+  color: #00ff88;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#resultsSection h2 {
+  color: #ffffff;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+#resultsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+#resultsTable th {
+  background: #1a1a1a;
+  color: #00ff88;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid #00ff88;
+}
+
+#resultsTable td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #2a2a2a;
+  color: #cccccc;
+}
+
+#resultsTable tr:hover td {
+  background: #1a1a1a;
+}
