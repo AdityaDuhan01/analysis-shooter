@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Real-Time Reaction Performance Analysis System
 
 A multiplayer 2D browser game where players compete by clicking targets as fast as possible. The system tracks and analyzes reaction time, accuracy, and performance after each game.
@@ -67,3 +68,8 @@ node server/index.js
 ## Team
 - Aditya Duhan — Full Stack Development (backend, real-time multiplayer, database, game logic)
 - Vikash Yadav — Frontend UI, analytics dashboard, documentation and testing
+=======
+# analysis-shooter
+## 👨‍💻 Contributor
+- Vikash Yadav (added comments for practice)
+
