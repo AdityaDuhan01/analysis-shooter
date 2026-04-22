@@ -23,6 +23,9 @@ let gameRunning = false;
 let timeLeft = 30;
 let spawnInterval = null;
 let timerInterval = null;
+let reactionTimes = [];
+let totalClicks = 0;
+let hits = 0;
 
 // --- Socket Events ---
 
@@ -85,11 +88,15 @@ canvas.addEventListener('click', (e) => {
   const mouseX = e.clientX - rect.left;
   const mouseY = e.clientY - rect.top;
 
+  totalClicks++;  // count every click
+
   const result = checkHit(mouseX, mouseY);
   if (result.hit) {
+    hits++;
     score++;
+    reactionTimes.push(result.reactionTime);
     scoreEl.textContent = 'Score: ' + score;
-    socket.emit('scored'); // tell server
+    socket.emit('scored');
   }
 });
 
