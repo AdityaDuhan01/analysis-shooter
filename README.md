@@ -67,3 +67,6 @@ node server/index.js
 ## Team
 - Aditya Duhan — Full Stack Development (backend, real-time multiplayer, database, game logic)
 - Vikash Yadav — Frontend UI, analytics dashboard, documentation and testing
+
+## Live Demo
+https://analysis-shooter.onrender.com
